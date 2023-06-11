@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .popup-container {
+            position: fixed;
+            left: 100px;
+            top: 100px;
+            border: 1px solid #ebebee;
+            padding: 40px 60px;
+            /* display: none;    기본적으로 쿠키에 따라서 표시를 결정해야 하므로 */
+        }
+
+        .popup-container img {
+            width: 100px;
+        }
+
+        .popup-container p {
+            width: 300px;
+        }
+
+        .popup-container.hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="delCookie">쿠키 삭제</button>
+
+    <div class='popup-container'>
+        <img src="images/cookie.png">
+        <h3>Cookie Policy</h3>
+        <p>이 사이트는 귀하의 웹 사이트에 쿠키를 저장하고 당사의 쿠키 정책에 따라 정보를 공개할 수 있습니다.<a href="#">자세히 보기</a></p>
+        <button id="acceptBtn">Accept</button>
+        <div>
+            <input type="checkbox" id='popup-check'>
+            <label for="popup">하루 안보기</label>
+            <button class="close" id="closeBtn"> 닫기 </button>
+        </div>
+    </div>
+    <script>
+        document.cookie = 'brand=korea_it';
+        
+
+        document.addEventListener('DOMContentLoaded',()=>{
+         
+        console.log(document.cookie);
+        
+      
+
+        })
+
+        function setCookie(name,value,date){
+            let today = new Date();
+            today.setDate(today.getDate() + date);//내일날짜
+        document.cookie = `${name}=${value};Expires=${today.toUTCString()};`;
+        }
+    </script>
+    <script>
+        const delCookie = document.querySelector('.delCookie');
+        delCookie.addEventListener('click',()=>{
+        setCookie('brand','korea',-1);
+        //max-age=0, 쿠키를 삭제 할 때는 하나 
+        })
+    </script>
+    <script>
+        const closeBtn = document.querySelector('#closeBtn');
+        closeBtn.addEventListener('click',()=>{
+            const popupCheck = document.querySelector('#popup-check');
+            if(popupCheck.checked){
+            setCookie('onday','done',1);
+            }else{
+            setCookie('onday','done',1); //지정할 필요는 없음
+            }
+        document.querySelector('.popup-container').classList.add('hide');
+        })
+    </script>
+    <script>
+        const accepBtn = document.querySelector('#acceptBtn');
+        //브랜드에서 나를 관리하도록 두겠다.
+        acceptBtn.addEventListener('click',()=>{
+            setCookie('accept','done',365)
+        document.querySelector('.popup-container').classList.add('hide');
+        })
+    </script>
+    </body>
+   

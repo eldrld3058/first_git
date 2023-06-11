@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/cookies.css">
+</head>
+<body>
+    <div class="popup-container">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptatibus debitis maiores ab tenetur nam, eos quos recusandae molestias expedita ipsum, alias asperiores eius obcaecati saepe quo possimus quas dignissimos.
+        <button id="popup-close-btn">닫기</button>
+    </div>
+    <!-- <script>
+        document.cookie = 'brand=korea_it';
+        console.log(document.cookie);
+
+        document.addEventListener('DOMContentLoaded',()=>{
+         let today = new Date();
+         today.setDate(today.getDate() + 1);//내일날짜
+         //document.cookie = `brand=korea_it;Expires=${today.toUTCString()};`;
+         document.cookie = `brand=korea_it;max-age=10;`;
+         //언제까지 유지할까
+         console.log(document.cookie);
+ 
+
+        })
+
+        function setCookie(name,value,date){
+        document.cookie = `${name}=${value};Expires=${today.toUTCString()};`;
+        }
+    </script> -->
+    <script>
+        document.cookie = 'brand=korea_it';
+        console.log(document.cookie);
+
+        document.addEventListener('DOMContentLoaded',()=>{
+         let today = new Date();
+         today.setDate(today.getDate() + 1);//내일날짜
+         //document.cookie = `brand=korea_it;Expires=${today.toUTCString()};`;
+         document.cookie = `brand=korea_it;max-age=10;`;
+         //언제까지 유지할까
+         console.log(document.cookie);
+ 
+
+        })
+
+        function setCookie(name,value,date){
+        document.cookie = `${name}=${value};Expires=${today.toUTCString()};`;
+        }
+    </script>
+    <script>
+        const delCookie = document.querySelector('.delCookie');
+        delCookie.addEventListener('click',()=>{
+        setCookie('brand','korea',-1);
+        //max-age=0, 쿠키를 삭제 할 때는 하나 
+        })
+    </script>
+    <!-- 
+    쿠키
+    name=value;
+    domain=google.com;
+    path=현재폴더
+    max-age : 사용할 수 있는 기간
+      
+
+    -->
+</body>
+</html>
